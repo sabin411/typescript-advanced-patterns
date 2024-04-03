@@ -1,5 +1,7 @@
 import { Equal, Expect } from "../helpers/type-utils";
 
+import { F } from "ts-toolbelt";
+
 /**
  * This is an identity function. It takes a value and returns the same value.
  * Except that it doesn't work great on arrays, or object values.
@@ -14,7 +16,7 @@ import { Equal, Expect } from "../helpers/type-utils";
  *
  * So, we can use F.Narrow from ts-toolbelt instead.
  */
-export const asConst = <T>(t: T) => t;
+export const asConst = <T>(t: F.Narrow<T>) => t;
 
 const fruits = asConst([
   {
@@ -39,8 +41,8 @@ type tests = [
         {
           name: "banana";
           price: 2;
-        },
+        }
       ]
     >
-  >,
+  >
 ];
